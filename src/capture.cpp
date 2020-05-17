@@ -10,14 +10,13 @@ namespace cv_camera
 namespace enc = sensor_msgs::image_encodings;
 
 Capture::Capture(ros::NodeHandle &node, const std::string &topic_name,
-                 int32_t buffer_size, const std::string &frame_id,
-                 const std::string& camera_name)
+                 int32_t buffer_size, const std::string &frame_id)
     : node_(node),
       it_(node_),
       topic_name_(topic_name),
       buffer_size_(buffer_size),
       frame_id_(frame_id),
-      info_manager_(node_, camera_name),
+      info_manager_(node_, frame_id),
       capture_delay_(ros::Duration(node_.param("capture_delay", 0.0)))
 {
 }
